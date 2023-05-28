@@ -60,15 +60,17 @@
               Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
           })
-            .then((response)=>
-                console.log(response,'Update')        
-            )
+          .then((response) => {
+              if (response.status === 200) { 
+                this.$router.push(`/ViewerThreads/${response.data._id}`);
+              }
+            })
           .catch(error => {
             console.error(error);
           });
       },
+      },
       }
-    };
   </script>
   
   
